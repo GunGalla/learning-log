@@ -4,10 +4,14 @@ version = "0.1.0"
 description = ""
 authors = ["Iaroslav <GunGalla@gmail.com>"]
 readme = "README.md"
-packages = [{include = "engine"}]
+packages = [
+    {include = "engine"},
+    {include = "learning_log"},
+]
 
 [tool.poetry.dependencies]
 python = "^3.10"
+django = "^4.1.5"
 
 
 [tool.poetry.group.dev.dependencies]
