@@ -1,6 +1,8 @@
 """Views of the page."""
-from django.shortcuts import render
+from django.shortcuts import render, redirect
+
 from .models import Topic
+from .forms import TopicForm
 
 
 def index(request):
@@ -21,3 +23,20 @@ def topic(request, topic_id):
     entries = topic.entry_set.order_by('-date_added')
     context = {'topic': topic, 'entries': entries}
     return render(request, 'learning_logs/topic.html', context)
+
+
+def new_topic(request):
+    """Creates new topic."""
+    if request.method != 'POST':
+        # New empty form creation
+        form = TopicForm()
+    else:
+        # Send data; data processing
+        form = TopicForm(data=request.POST)
+        if form.is_valid():
+            form.save()
+            return redirect('learning_logs:topics')
+
+    # Show empty or invalid form
+    context = {'form': form}
+    return render(request, 'learning_logs/new_topic.html', context)
