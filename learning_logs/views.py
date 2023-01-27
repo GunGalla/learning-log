@@ -46,7 +46,7 @@ def new_entry(request, topic_id):
     """Creates new entry in the topic."""
     topic = Topic.objects.get(id=topic_id)
     if request.method != 'POST':
-        # New empty form creatiom
+        # New empty form creation
         form = EntryForm()
     else:
         # Send data; data processing
