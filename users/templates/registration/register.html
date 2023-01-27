@@ -1,4 +1,4 @@
-{% extends 'learning_logs/base.html %}
+{% extends 'learning_logs/base.html' %}
 
 {% block content %}
 
@@ -6,7 +6,7 @@
         {% csrf_token %}
         {{ form.as_p }}
 
-        <button name="submit">register</button>
+        <button name="submit">Register</button>
         <input type="hidden" name="next" value="{% url 'learning_logs:index' %}" />
     </form>
 
