@@ -1,7 +1,7 @@
 """Form creation module."""
 from django import forms
 
-from .models import Topic
+from .models import Topic, Entry
 
 
 class TopicForm(forms.ModelForm):
@@ -11,3 +11,13 @@ class TopicForm(forms.ModelForm):
         model = Topic
         fields = ['text']
         labels = {'text': ''}
+
+
+class EntryForm(forms.ModelForm):
+    """New enrty settings."""
+    class Meta:
+        """Settings."""
+        model = Entry
+        fields = ['text']
+        labels = {'text': 'Entry:'}
+        widgets = {'text': forms.Textarea(attrs={'cols': 80})}
