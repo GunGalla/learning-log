@@ -38,11 +38,19 @@
                         <a class="nav-link" href="{% url 'users:register' %}">Register</a>
                     </li>
                     <li class="nav-item">
-                        <a class="navv-link" href="{% url 'users:login' %}">Log in</a>
+                        <a class="nav-link" href="{% url 'users:login' %}">Log in</a>
                     </li>
                 {% endif %}
                 </ul>
             </div>
         </nav>
+        <main role="main" class="container">
+            <div class="pb-2 mb-2 border-bottom">
+                {% block page_header %}{% endblock page_header %}
+            </div>
+            <div>
+                {% block content %}{% endblock content %}
+            </div>
+        </main>
     </body>
 </html>
